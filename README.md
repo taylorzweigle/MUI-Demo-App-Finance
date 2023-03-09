@@ -12,6 +12,6 @@ Future developments to include analytics and budgeting pages.
 
 ## Screenshots
 
-![Dashboard_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/master/img/Dashboard_Page.PNG)
-![Transactions_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/master/img/Transactions_Page.PNG)
-![Payments_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/master/img/Payments_Page.PNG)
+![Dashboard_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/main/img/Dashboard_Page.png)
+![Transactions_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/main/img/Transactions_Page.png)
+![Payments_Page](https://github.com/taylorzweigle/MUI-Demo-App-Finance/blob/main/img/Payments_Page.png)
