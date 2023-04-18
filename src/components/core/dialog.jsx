@@ -8,14 +8,7 @@ import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-const Dialog = ({
-  children,
-  open,
-  onClose,
-  title,
-  primaryButton,
-  secondaryButton,
-}) => {
+const Dialog = ({ children, open, onClose, title, primaryButton, secondaryButton, tertiaryButton }) => {
   const dialogStyle = {
     position: "absolute",
     top: "50%",
@@ -39,12 +32,17 @@ const Dialog = ({
               <Divider />
             </>
           ) : null}
-          {children}
+          <Box>{children}</Box>
           <Divider />
           <Stack direction="row-reverse" spacing={2} mt={2}>
             {primaryButton ? (
               <Button variant="contained" onClick={onClose}>
                 {primaryButton}
+              </Button>
+            ) : null}
+            {tertiaryButton ? (
+              <Button variant="outlined" onClick={onClose}>
+                {tertiaryButton}
               </Button>
             ) : null}
             {secondaryButton ? (

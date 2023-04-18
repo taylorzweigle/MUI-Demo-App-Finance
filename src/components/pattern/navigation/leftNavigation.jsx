@@ -39,7 +39,7 @@ const LeftNavigation = () => {
     maxWidth: "256px",
     backgroundColor: "background.paper",
     borderRight: "1px solid",
-    borderColor: "grey.400",
+    borderColor: "grey.300",
   };
 
   const mainIconStyle = { fontSize: ThemeTokens.SYS_ICON_XL };
@@ -52,18 +52,9 @@ const LeftNavigation = () => {
   return (
     <>
       <Paper variant="outlined">
-        <Stack
-          direction="column"
-          justifyContent="space-between"
-          sx={leftNavigationStyle}
-        >
+        <Stack direction="column" justifyContent="space-between" sx={leftNavigationStyle}>
           <Box>
-            <Stack
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              m={2}
-            >
+            <Stack direction="column" justifyContent="center" alignItems="center" m={2}>
               <SavingsIcon color="primary" sx={mainIconStyle} />
               <Typography variant="h5" color="textPrimary">
                 FatWallet
@@ -75,12 +66,7 @@ const LeftNavigation = () => {
             <Box>
               <List>
                 {primaryPages.map((item) => (
-                  <Link
-                    key={item.id}
-                    to={`/${item.page}`}
-                    component={RouterLink}
-                    style={linkStyle}
-                  >
+                  <Link key={item.id} to={`/${item.page}`} component={RouterLink} style={linkStyle}>
                     <ListItem disablePadding>
                       <ListItemButton
                         selected={selectedIndex === item.id}

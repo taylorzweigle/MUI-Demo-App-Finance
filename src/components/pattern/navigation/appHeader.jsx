@@ -18,10 +18,12 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 
+import DropdownMenu from "../menus/dropdownMenu";
+
 import AccountDialog from "../dialogs/accountDialog";
 import SettingsDialog from "../dialogs/settingsDialog";
 
-const AppHeader = ({ title, onThemeChange }) => {
+const AppHeader = ({ user, title, year, years, onThemeChange, onYearChange }) => {
   const [menuAnchor, setMenuAnchor] = useState(null);
   const [accountOpen, setAccountOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -43,21 +45,18 @@ const AppHeader = ({ title, onThemeChange }) => {
   };
   const handleSettingsClose = () => setSettingsOpen(false);
 
-  const handleThemeChange = (theme) => {
-    onThemeChange(theme);
-  };
+  const handleThemeChange = (theme) => onThemeChange(theme);
 
+  const handleYearSelection = (year) => onYearChange(year);
+
+  const appHeaderStyle = { borderBottom: "1px solid", borderColor: "grey.300" };
   const dropdownMenuStyle = { width: 216, maxWidth: 216 };
 
   return (
     <>
-      <Box>
+      <Box sx={appHeaderStyle}>
         <Paper variant="outlined" square>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
+          <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Box ml={2}>
               <Stack direction="row" spacing={2}>
                 <Typography variant="h5" color="textPrimary">
@@ -65,15 +64,26 @@ const AppHeader = ({ title, onThemeChange }) => {
                 </Typography>
               </Stack>
             </Box>
-            <Box></Box>
+            <Box>
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Typography>Year:</Typography>
+                <DropdownMenu
+                  value={year}
+                  values={years}
+                  setValue={(year) => {
+                    handleYearSelection(year);
+                  }}
+                />
+              </Stack>
+            </Box>
             <Box mr={2}>
               <List>
                 <ListItem onClick={handleMenuClick} disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <Avatar>TZ</Avatar>
+                      <Avatar />
                     </ListItemIcon>
-                    <ListItemText>Taylor Zweigle</ListItemText>
+                    <ListItemText>{user}</ListItemText>
                     <ArrowDropDownIcon />
                   </ListItemButton>
                 </ListItem>
@@ -99,11 +109,7 @@ const AppHeader = ({ title, onThemeChange }) => {
         </Paper>
       </Box>
       <AccountDialog open={accountOpen} onClose={handleAccountClose} />
-      <SettingsDialog
-        open={settingsOpen}
-        onClose={handleSettingsClose}
-        onThemeChange={(theme) => handleThemeChange(theme)}
-      />
+      <SettingsDialog open={settingsOpen} onClose={handleSettingsClose} onThemeChange={(theme) => handleThemeChange(theme)} />
     </>
   );
 };

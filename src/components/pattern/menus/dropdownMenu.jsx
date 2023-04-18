@@ -10,9 +10,8 @@ import MenuItem from "@mui/material/MenuItem";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-const DropdownMenu = ({ value, setYear }) => {
+const DropdownMenu = ({ value, values, setValue }) => {
   const [menuAnchor, setMenuAnchor] = useState(null);
-  const [selectedValue, setSelectedValue] = useState(value);
 
   const menuOpen = Boolean(menuAnchor);
 
@@ -20,8 +19,7 @@ const DropdownMenu = ({ value, setYear }) => {
   const handleMenuClose = () => setMenuAnchor(null);
 
   const handleSelect = (value) => {
-    setSelectedValue(value);
-    setYear(value);
+    setValue(value);
     handleMenuClose();
   };
 
@@ -30,16 +28,15 @@ const DropdownMenu = ({ value, setYear }) => {
   return (
     <>
       <Button onClick={handleMenuClick} endIcon={<ArrowDropDownIcon />}>
-        {selectedValue}
+        {value}
       </Button>
       <Menu anchorEl={menuAnchor} open={menuOpen} onClose={handleMenuClose}>
         <Box sx={dropdownMenuStyle}>
-          <MenuItem onClick={() => handleSelect("2021")}>
-            <ListItemText>2021</ListItemText>
-          </MenuItem>
-          <MenuItem onClick={() => handleSelect("2022")}>
-            <ListItemText>2022</ListItemText>
-          </MenuItem>
+          {values.map((item) => (
+            <MenuItem key={item} onClick={() => handleSelect(item)}>
+              <ListItemText>{item}</ListItemText>
+            </MenuItem>
+          ))}
         </Box>
       </Menu>
     </>

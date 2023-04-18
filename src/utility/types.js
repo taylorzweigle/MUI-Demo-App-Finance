@@ -1,4 +1,5 @@
 //Taylor Zweigle, 2023
+import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
@@ -19,12 +20,13 @@ const iconStyle = {
   width: ThemeTokens.SYS_ICON_SM,
   height: ThemeTokens.SYS_ICON_SM,
 };
+const tooltipStyle = { color: "grey.50" };
 
 export const TYPE_BILLS_UTILITIES = {
   type: "bills and utilities",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_900,
   icon: (
-    <Tooltip title="Bills & Utilities" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Bills & Utilities</Box>} placement="top">
       <CreditCardIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -34,7 +36,7 @@ export const TYPE_CAR = {
   type: "car",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_800,
   icon: (
-    <Tooltip title="Car" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Car</Box>} placement="top">
       <ConstructionIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -44,7 +46,7 @@ export const TYPE_ENTERTAINMENT = {
   type: "entertainment",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_700,
   icon: (
-    <Tooltip title="Entertainment" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Entertainment</Box>} placement="top">
       <CalendarMonthIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -54,7 +56,7 @@ export const TYPE_FOOD_DRINK = {
   type: "food and drink",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_600,
   icon: (
-    <Tooltip title="Food & Drink" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Food & Drink</Box>} placement="top">
       <RestaurantIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -64,7 +66,7 @@ export const TYPE_GAS = {
   type: "gas",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_500,
   icon: (
-    <Tooltip title="Gas" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Gas</Box>} placement="top">
       <LocalGasStationIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -74,7 +76,7 @@ export const TYPE_GIFTS_DONATIONS = {
   type: "gifts and donations",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_400,
   icon: (
-    <Tooltip title="Gifts & Donations" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Gifts & Donations</Box>} placement="top">
       <CardGiftcardIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -84,7 +86,7 @@ export const TYPE_GROCERIES = {
   type: "groceries",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_300,
   icon: (
-    <Tooltip title="Groceries" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Groceries</Box>} placement="top">
       <ShoppingCartIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -94,7 +96,7 @@ export const TYPE_INCOME = {
   type: "income",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_200,
   icon: (
-    <Tooltip title="Income" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Income</Box>} placement="top">
       <AttachMoneyIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -104,7 +106,7 @@ export const TYPE_PAYMENT = {
   type: "payment",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_200,
   icon: (
-    <Tooltip title="Payment" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Payment</Box>} placement="top">
       <MoneyOffIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -114,7 +116,7 @@ export const TYPE_SHOPPING = {
   type: "shopping",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_100,
   icon: (
-    <Tooltip title="Shopping" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Shopping</Box>} placement="top">
       <LocalOfferIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),
@@ -124,7 +126,7 @@ export const TYPE_TRAVEL = {
   type: "travel",
   color: ThemeTokens.SYS_LIGHT_THEME_CHART_50,
   icon: (
-    <Tooltip title="Travel" placement="top">
+    <Tooltip title={<Box sx={tooltipStyle}>Travel</Box>} placement="top">
       <LocalTaxiIcon color="action" sx={iconStyle} />
     </Tooltip>
   ),

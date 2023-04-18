@@ -77,6 +77,7 @@ export const lightTheme = createTheme({
     background: {
       paper: ThemeTokens.SYS_LIGHT_THEME_BACKGROUND_PAPER,
       default: ThemeTokens.SYS_LIGHT_THEME_BACKGROUND_DEFAULT,
+      page: ThemeTokens.SYS_GRAY_200,
     },
     action: {
       active: ThemeTokens.SYS_LIGHT_THEME_TEXT_PRIMARY,
@@ -94,7 +95,7 @@ export const lightTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: ThemeTokens.SYS_GRAY_50,
+          backgroundColor: ThemeTokens.SYS_GRAY_200,
         },
       },
     },

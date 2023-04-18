@@ -3,17 +3,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import {
-  TYPE_BILLS_UTILITIES,
-  TYPE_CAR,
-  TYPE_ENTERTAINMENT,
-  TYPE_FOOD_DRINK,
-  TYPE_GAS,
-  TYPE_GIFTS_DONATIONS,
-  TYPE_GROCERIES,
-  TYPE_SHOPPING,
-  TYPE_TRAVEL,
-} from "../../utility/types";
+import * as types from "../../utility/types";
 
 import { getPieFraction } from "../../utility/utility";
 
@@ -21,67 +11,53 @@ const PieChart = ({ theme, year }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (year !== "2022") {
-      setData([
-        { name: "category1", y: 11.11 },
-        { name: "category2", y: 11.11 },
-        { name: "category3", y: 11.11 },
-        { name: "category4", y: 11.11 },
-        { name: "category5", y: 11.11 },
-        { name: "category6", y: 11.11 },
-        { name: "category7", y: 11.11 },
-        { name: "category8", y: 11.11 },
-        { name: "category9", y: 11.11 },
-      ]);
-    } else {
-      setData([
-        {
-          name: TYPE_BILLS_UTILITIES.type,
-          color: TYPE_BILLS_UTILITIES.color,
-          y: getPieFraction(TYPE_BILLS_UTILITIES),
-        },
-        {
-          name: TYPE_CAR.type,
-          color: TYPE_CAR.color,
-          y: getPieFraction(TYPE_CAR),
-        },
-        {
-          name: TYPE_ENTERTAINMENT.type,
-          color: TYPE_ENTERTAINMENT.color,
-          y: getPieFraction(TYPE_ENTERTAINMENT),
-        },
-        {
-          name: TYPE_FOOD_DRINK.type,
-          color: TYPE_FOOD_DRINK.color,
-          y: getPieFraction(TYPE_FOOD_DRINK),
-        },
-        {
-          name: TYPE_GAS.type,
-          color: TYPE_GAS.color,
-          y: getPieFraction(TYPE_GAS),
-        },
-        {
-          name: TYPE_GIFTS_DONATIONS.type,
-          color: TYPE_GIFTS_DONATIONS.color,
-          y: getPieFraction(TYPE_GIFTS_DONATIONS),
-        },
-        {
-          name: TYPE_GROCERIES.type,
-          color: TYPE_GROCERIES.color,
-          y: getPieFraction(TYPE_GROCERIES),
-        },
-        {
-          name: TYPE_SHOPPING.type,
-          color: TYPE_SHOPPING.color,
-          y: getPieFraction(TYPE_SHOPPING),
-        },
-        {
-          name: TYPE_TRAVEL.type,
-          color: TYPE_TRAVEL.color,
-          y: getPieFraction(TYPE_TRAVEL),
-        },
-      ]);
-    }
+    setData([
+      {
+        name: types.TYPE_BILLS_UTILITIES.type,
+        color: types.TYPE_BILLS_UTILITIES.color,
+        y: getPieFraction(types.TYPE_BILLS_UTILITIES.type, year),
+      },
+      {
+        name: types.TYPE_CAR.type,
+        color: types.TYPE_CAR.color,
+        y: getPieFraction(types.TYPE_CAR.type, year),
+      },
+      {
+        name: types.TYPE_ENTERTAINMENT.type,
+        color: types.TYPE_ENTERTAINMENT.color,
+        y: getPieFraction(types.TYPE_ENTERTAINMENT.type, year),
+      },
+      {
+        name: types.TYPE_FOOD_DRINK.type,
+        color: types.TYPE_FOOD_DRINK.color,
+        y: getPieFraction(types.TYPE_FOOD_DRINK.type, year),
+      },
+      {
+        name: types.TYPE_GAS.type,
+        color: types.TYPE_GAS.color,
+        y: getPieFraction(types.TYPE_GAS.type, year),
+      },
+      {
+        name: types.TYPE_GIFTS_DONATIONS.type,
+        color: types.TYPE_GIFTS_DONATIONS.color,
+        y: getPieFraction(types.TYPE_GIFTS_DONATIONS.type, year),
+      },
+      {
+        name: types.TYPE_GROCERIES.type,
+        color: types.TYPE_GROCERIES.color,
+        y: getPieFraction(types.TYPE_GROCERIES.type, year),
+      },
+      {
+        name: types.TYPE_SHOPPING.type,
+        color: types.TYPE_SHOPPING.color,
+        y: getPieFraction(types.TYPE_SHOPPING.type, year),
+      },
+      {
+        name: types.TYPE_TRAVEL.type,
+        color: types.TYPE_TRAVEL.color,
+        y: getPieFraction(types.TYPE_TRAVEL.type, year),
+      },
+    ]);
 
     //eslint-disable-next-line
   }, [year]);
@@ -89,12 +65,12 @@ const PieChart = ({ theme, year }) => {
   const options = {
     chart: {
       type: "pie",
-      backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
+      backgroundColor: theme === "dark" ? "#171717" : "#ffffff",
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false,
       style: {
-        color: theme === "dark" ? "#000000" : "#ffffff",
+        color: theme === "dark" ? "#171717" : "#ffffff",
       },
     },
     credits: {

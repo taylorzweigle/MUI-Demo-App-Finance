@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
@@ -16,19 +17,14 @@ import TransactionHistoryTable from "../components/pattern/tables/transactionHis
 
 import DropdownMenu from "../components/pattern/menus/dropdownMenu";
 
-import {
-  getNetWorth,
-  getTotalIncome,
-  getTotalExpenses,
-  currencyFormatter,
-} from "../utility/utility";
+import { getNetWorth, getTotalIncome, getTotalExpenses, currencyFormatter } from "../utility/utility";
 
-const DashboardPage = ({ theme }) => {
-  const [barYear, setBarYear] = useState("2022");
-  const [pieYear, setPieYear] = useState("2022");
+const DashboardPage = ({ theme, year }) => {
+  const pageSizes = [5, 10, 25, 50];
 
-  const handleBarYear = (selectedYear) => setBarYear(selectedYear);
-  const handlePieYear = (selectedYear) => setPieYear(selectedYear);
+  const [pageSize, setPageSize] = useState(pageSizes[0]);
+
+  const handlePageSize = (selectedSize) => setPageSize(selectedSize);
 
   return (
     <Box>
@@ -56,22 +52,26 @@ const DashboardPage = ({ theme }) => {
         ></InfoCard>
       </Stack>
       <Stack direction="row" spacing={2} m={2}>
-        <Card
-          title="Monthly Balance"
-          action={<DropdownMenu value="2022" setYear={handleBarYear} />}
-        >
-          <BarChart theme={theme} year={barYear} />
+        <Card title="Monthly Balance">
+          <BarChart theme={theme} year={year} />
         </Card>
-        <Card
-          title="Spending Categories"
-          action={<DropdownMenu value="2022" setYear={handlePieYear} />}
-        >
-          <PieChart theme={theme} year={pieYear} />
+        <Card title="Spending Categories">
+          <PieChart theme={theme} year={year} />
         </Card>
       </Stack>
       <Stack direction="row" spacing={2} m={2}>
-        <Card title="Transaction History">
-          <TransactionHistoryTable length={10} />
+        <Card
+          title="Transaction History"
+          action={
+            <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
+              <Typography variant="body2" color="text.secondary">
+                Items
+              </Typography>
+              <DropdownMenu value={pageSize} values={pageSizes} setValue={handlePageSize} />
+            </Stack>
+          }
+        >
+          <TransactionHistoryTable length={pageSize} reverse={true} />
         </Card>
       </Stack>
     </Box>

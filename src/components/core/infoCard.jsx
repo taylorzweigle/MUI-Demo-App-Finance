@@ -6,10 +6,11 @@ import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+import CardTitle from "../subComponents/cardTitle";
+
 const InfoCard = ({ icon, title, color, backgroundColor, amount }) => {
   const cardStyle = { backgroundColor, width: "100%" };
-  const boldStyle = { fontWeight: "bold" };
-  const amountStyle = { ...boldStyle, color: color };
+  const amountStyle = { fontWeight: "bold", color: color };
 
   return (
     <Card sx={cardStyle}>
@@ -21,9 +22,7 @@ const InfoCard = ({ icon, title, color, backgroundColor, amount }) => {
         >
           <Stack direction="row" alignItems="center" spacing={1}>
             <Box>{icon}</Box>
-            <Typography variant="subtitle1" sx={boldStyle}>
-              {title}
-            </Typography>
+            <CardTitle title={title} />
           </Stack>
           <Typography variant="h5" sx={amountStyle}>
             {amount}

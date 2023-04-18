@@ -16,21 +16,16 @@ import LoopIcon from "@mui/icons-material/Loop";
 
 import { data } from "../../../data/data";
 
-import {
-  formatCurrency,
-  formatCurrencyColor,
-  convertType,
-  currencyFormatter,
-} from "../../../utility/utility";
+import { formatCurrency, formatCurrencyColor, convertType, currencyFormatter } from "../../../utility/utility";
 
-const TransactionHistoryTable = ({ month, length, account }) => {
-  const _filteredData = account
-    ? data.filter((item) => item.account === account)
-    : data;
+const TransactionHistoryTable = ({ month, length, account, reverse }) => {
+  const _filteredDataByAccount = account ? data.filter((item) => item.account === account) : data;
 
-  const filteredData = month
-    ? _filteredData.filter((item) => item.date.slice(0, 3) === month)
-    : _filteredData;
+  const _filteredDataByMonth = month
+    ? _filteredDataByAccount.filter((item) => item.date.slice(0, 3) === month)
+    : _filteredDataByAccount;
+
+  const filteredData = reverse ? [..._filteredDataByMonth].reverse() : _filteredDataByMonth;
 
   const cellWidthXS = { width: 0 };
   const cellWidthMD = { width: 16 };
@@ -41,6 +36,7 @@ const TransactionHistoryTable = ({ month, length, account }) => {
   const textAlignStyle = { textAlign: "right" };
   const accountStyle = { width: 12, height: 12 };
   const avatarStyle = { backgroundColor: "grey.100", width: 32, height: 32 };
+  const tooltipStyle = { color: "grey.50" };
 
   return (
     <Box>
@@ -64,9 +60,7 @@ const TransactionHistoryTable = ({ month, length, account }) => {
           {filteredData.slice(0, length).map((item) => (
             <TableRow key={item.id}>
               <TableCell sx={cellWidthXS}>
-                <CircleIcon
-                  sx={{ ...accountStyle, color: convertType(item.type).color }}
-                />
+                <CircleIcon sx={{ ...accountStyle, color: convertType(item.type).color }} />
               </TableCell>
               <TableCell sx={cellWidthLG}>
                 <Avatar sx={avatarStyle}>{convertType(item.type).icon}</Avatar>
@@ -85,7 +79,7 @@ const TransactionHistoryTable = ({ month, length, account }) => {
               </TableCell>
               <TableCell sx={cellWidthMD}>
                 {item.recurring ? (
-                  <Tooltip title="Recurring" placement="top">
+                  <Tooltip title={<Box sx={tooltipStyle}>Recurring</Box>} placement="top">
                     <LoopIcon color="action" sx={iconStyle} />
                   </Tooltip>
                 ) : null}

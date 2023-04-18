@@ -20,7 +20,11 @@ import { darkTheme } from "./themes/darkTheme";
 import "./App.css";
 
 function App() {
-  let [theme, setTheme] = useState(lightTheme);
+  const years = ["2022", "2023"];
+
+  const [user] = useState("Taylor Zweigle");
+  const [theme, setTheme] = useState(lightTheme);
+  const [year, setYear] = useState(years[0]);
 
   const handleThemeChange = (theme) => {
     if (theme === "light") {
@@ -31,18 +35,14 @@ function App() {
     }
   };
 
-  const pageStyle = {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "grey.50",
-  };
+  const handleYearChange = (year) => setYear(year);
 
+  const pageStyle = { backgroundColor: "background.page" };
   const leftNavigationStyle = {
     float: "left",
     width: "100%",
     maxWidth: "256px",
   };
-
   const overflowStyle = { overflow: "hidden" };
 
   return (
@@ -54,14 +54,15 @@ function App() {
         </Box>
         <Box sx={overflowStyle}>
           <AppHeader
-            title="App Header"
+            user={user}
+            title="Fat Wallet"
+            year={year}
+            years={years}
             onThemeChange={(theme) => handleThemeChange(theme)}
+            onYearChange={(year) => handleYearChange(year)}
           />
           <Routes>
-            <Route
-              path="/Dashboard"
-              element={<DashboardPage theme={theme.palette.mode} />}
-            />
+            <Route path="/Dashboard" element={<DashboardPage theme={theme.palette.mode} year={year} />} />
             <Route path="/Transactions" element={<TransactionsPage />} />
             <Route path="/Payments" element={<PaymentsPage />} />
             <Route path="/" element={<LoginPage />} />

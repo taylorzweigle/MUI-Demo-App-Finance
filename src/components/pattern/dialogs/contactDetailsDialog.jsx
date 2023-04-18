@@ -8,33 +8,18 @@ import Typography from "@mui/material/Typography";
 import ContactAvatar from "../../core/contactAvatar";
 import Dialog from "../../core/dialog";
 
-import {
-  formatCurrency,
-  formatCurrencyColor,
-  currencyFormatter,
-  getBalance,
-} from "../../../utility/utility";
+import { formatCurrency, formatCurrencyColor, currencyFormatter, getContactBalance } from "../../../utility/utility";
 
 const ContactDetailsDialog = ({ open, onClose, contact }) => {
   return (
     <Dialog open={open} onClose={onClose} secondaryButton="Close">
       {contact ? (
         <Stack direction="column" spacing={2}>
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-          >
+          <Stack direction="column" justifyContent="center" alignItems="center" spacing={1}>
             <ContactAvatar contact={contact.avatar} size={128} />
             <Typography variant="h6">{contact.name}</Typography>
-            <Typography
-              variant="subtitle1"
-              sx={{ color: formatCurrencyColor(getBalance(contact.name)) }}
-            >
-              {currencyFormatter.format(
-                formatCurrency(getBalance(contact.name))
-              )}
+            <Typography variant="subtitle1" sx={{ color: formatCurrencyColor(getContactBalance(contact.name)) }}>
+              {currencyFormatter.format(formatCurrency(getContactBalance(contact.name)))}
             </Typography>
           </Stack>
           <Divider />

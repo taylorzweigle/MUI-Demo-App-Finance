@@ -77,6 +77,7 @@ export const darkTheme = createTheme({
     background: {
       paper: ThemeTokens.SYS_DARK_THEME_BACKGROUND_PAPER,
       default: ThemeTokens.SYS_DARK_THEME_BACKGROUND_DEFAULT,
+      page: ThemeTokens.SYS_COMMON_BLACK,
     },
     action: {
       active: ThemeTokens.SYS_DARK_THEME_TEXT_PRIMARY,
@@ -94,7 +95,7 @@ export const darkTheme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: ThemeTokens.SYS_GRAY_900,
+          backgroundColor: ThemeTokens.SYS_COMMON_BLACK,
         },
       },
     },

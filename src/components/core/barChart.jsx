@@ -10,48 +10,31 @@ import { getBarTotal } from "../../utility/utility";
 const BarChart = ({ theme, year }) => {
   const [data, setData] = useState([]);
 
+  const categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
   useEffect(() => {
-    if (year !== "2022") {
-      setData([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-    } else {
-      setData([
-        getBarTotal(categories, 0),
-        getBarTotal(categories, 1),
-        getBarTotal(categories, 2),
-        getBarTotal(categories, 3),
-        getBarTotal(categories, 4),
-        getBarTotal(categories, 5),
-        getBarTotal(categories, 6),
-        getBarTotal(categories, 7),
-        getBarTotal(categories, 8),
-        getBarTotal(categories, 9),
-        getBarTotal(categories, 10),
-        getBarTotal(categories, 11),
-      ]);
-    }
+    setData([
+      getBarTotal(categories, year, 0),
+      getBarTotal(categories, year, 1),
+      getBarTotal(categories, year, 2),
+      getBarTotal(categories, year, 3),
+      getBarTotal(categories, year, 4),
+      getBarTotal(categories, year, 5),
+      getBarTotal(categories, year, 6),
+      getBarTotal(categories, year, 7),
+      getBarTotal(categories, year, 8),
+      getBarTotal(categories, year, 9),
+      getBarTotal(categories, year, 10),
+      getBarTotal(categories, year, 11),
+    ]);
 
     //eslint-disable-next-line
   }, [year]);
 
-  const categories = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
   const barChartOptions = {
     chart: {
       type: "column",
-      backgroundColor: theme === "dark" ? "#000000" : "#ffffff",
+      backgroundColor: theme === "dark" ? "#171717" : "#ffffff",
     },
     credits: {
       enabled: false,
